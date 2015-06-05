@@ -5,7 +5,7 @@
 	var curDir = '';
 	var count = 1;
 
-	var swipe = new gTouch(swipeElement);
+	var swipe = new Touch(swipeElement);
 	swipe.preventScroll = true;
 
 	function handleSwipe (evt) {

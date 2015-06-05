@@ -5,7 +5,7 @@
 
 	var startTime = 0;
 
-	var click = new gTouch(specialBox);
+	var click = new Touch(specialBox);
 
 	function handleTouchStart (evt) {
 		startTime = new Date().getTime();

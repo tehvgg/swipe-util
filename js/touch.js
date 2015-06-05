@@ -1,10 +1,10 @@
 /**
- * @class gTouch
+ * @class Touch
  * @description Handles touch device interaction, including immediate click triggers and swipe events.
  */
 (function (scope) {
 
-	function gTouch (scope, options) {
+	function Touch (scope, options) {
 		this.init(scope, options);
 	}
 
@@ -264,7 +264,7 @@
 	};
 
 	/// CREATE ///
-	gTouch.prototype = Object.create(p);
-	scope.gTouch = gTouch;
+	Touch.prototype = Object.create(p);
+	scope.Touch = Touch;
 
 })(window);

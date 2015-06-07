@@ -3,54 +3,51 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title>Touch</title>
+		<title>Swipe</title>
 		<!-- styles -->
 		<link rel="stylesheet" type="text/css" href="styles/project.css" />
 		<!-- js -->
-		<script src="js/touch.js"></script>
+		<script src="js/swipe.js"></script>
 	</head>
 
 	<body>
-
-		<!--<header>
-			<h1>Experiment - gTouch</h1>
-			<p>Streamline touch device interaction.</p>
-		</header>
-
-		<main>
-
-			<!-- click
-			<section id="click">
-				<h3>Section: Click</h3>
-				<p>Trigger clicks immediately on tap, bypassing the standard ~300ms wait.</p>
-				<div id="regular" class="touch-box">
-					<p class="info">0ms</p>
-					<h5>Regular</h5>
-				</div>
-				<div id="special" class="touch-box">
-					<p class="info">0ms</p>
-					<h5>gTouch</h5>
-				</div>
-			</section>
-			<script src="js/click.js"></script>
-			<!-- /click -->
-
-
-			<!-- swipe
-			<section id="swipe">
-				<h3>Section: Swipe</h3>
-				<p>Trigger custom swipe events based on user gestures.</p>-->
-				<div id="swipeBox">
-					<h2 class="info">event.type</h2>
-					<h3>swipe here</h3>
-				</div>
-			<script src="js/swipe.js"></script>
-			<!--</section>
-			<script src="js/swipe.js"></script>
-			<!-- /swipe -->
-
-		<!--</main>-->
-
+		<div id="swipeBox">
+			<h2 class="infoEl">event.type</h2>
+			<h3>swipe here</h3>
+		</div>
 	</body>
 
+	<script type="text/javascript">
+		(function () {
+			var swipeEl = document.body;
+			var infoEl = document.querySelector('.infoEl');
+			var curDir = '';
+			var count = 1;
+
+			var swipe = new Swipe(swipeEl, { doPreventScroll: true });
+
+			function handleSwipe (evt) {
+				var text = infoEl.innerHTML;
+
+				if (evt.type === curDir) {
+					count++;
+					if (count === 2) {
+						text += (' x' + count);
+					} else {
+						text = text.substring(0, text.length - (count - 1).toString().length) + count;
+					}
+				} else {
+					count = 1;
+					text = curDir = evt.type;
+				}
+
+				infoEl.innerHTML = text;
+			}
+
+			swipeEl.addEventListener(swipe.up, handleSwipe);
+			swipeEl.addEventListener(swipe.down, handleSwipe);
+			swipeEl.addEventListener(swipe.left, handleSwipe);
+			swipeEl.addEventListener(swipe.right, handleSwipe);
+		})();
+	</script>
 </html>

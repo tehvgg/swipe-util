@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Swipe</title>
+		<link rel="stylesheet" type="text/css" href="project.css" />
+		<script src="swipe.js"></script>
+	</head>
+
+	<body>
+		<div id="swipeBox">
+			<h2 class="infoEl"></h2>
+			<h3>swipe anywhere</h3>
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		(function () {
+			var swipeEl = document.body;
+			var infoEl = document.querySelector('.infoEl');
+			var curDir = '';
+			var count = 1;
+			var swipe = new Swipe(swipeEl, { doPreventScroll: true });
+			function handleSwipe (evt) {
+				var text = infoEl.innerHTML;
+				if (evt.type === curDir) {
+					count++;
+					if (count === 2) {
+						text += (' x' + count);
+					} else {
+						text = text.substring(0, text.length - (count - 1).toString().length) + count;
+					}
+				} else {
+					count = 1;
+					text = curDir = evt.type;
+				}
+				infoEl.innerHTML = text;
+			}
+			swipeEl.addEventListener(swipe.up, handleSwipe);
+			swipeEl.addEventListener(swipe.down, handleSwipe);
+			swipeEl.addEventListener(swipe.left, handleSwipe);
+			swipeEl.addEventListener(swipe.right, handleSwipe);
+		})();
+	</script>
+</html>

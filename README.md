@@ -7,7 +7,7 @@ http://tehvgg.github.io/swipe-util/
 ## How to use it?
 ### Include the script in your head.
 ```javascript
-<script src="js/swipe.js"></script>
+<script src="swipe.js"></script>
 ```
 ### Instantiate the class.
 ```javascript
